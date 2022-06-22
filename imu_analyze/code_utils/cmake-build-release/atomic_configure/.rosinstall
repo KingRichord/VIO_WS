@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/moi/1_ws/src/imu_analyze/code_utils/cmake-build-release/devel/setup.sh

@@ -1,0 +1,5 @@
+<launch>
+  <!-- bringup parameters -->
+  <param name="imu_dev" value="/dev/ttyACM0" />
+  <node pkg="my_imu" type="my_imu_node" name="my_imu_node" output="screen" />
+</launch>
