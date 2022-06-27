@@ -1,8 +1,0 @@
-prefix=/home/moi/1_ws/src/imu_analyze/code_utils/cmake-build-release/devel
-
-Name: code_utils
-Description: Description of code_utils
-Version: 0.0.0
-Cflags: -I/home/moi/1_ws/src/imu_analyze/code_utils/include
-Libs: -L${prefix}/lib -lpolynomial -lcv_utils -lpnp
-Requires: roscpp std_msgs

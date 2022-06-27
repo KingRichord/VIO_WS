@@ -1,0 +1,66 @@
+%YAML:1.0
+
+#common parameters
+#support: 1 imu 1 cam; 1 imu 2 cam: 2 cam; 
+imu: 1         
+num_of_cam: 2  
+
+imu_topic: "/camera/imu"
+image0_topic: "/camera/infra1/image_rect_raw"
+image1_topic: "/camera/infra2/image_rect_raw"
+output_path: "/home/moi/output/"
+
+cam0_calib: "left.yaml"
+cam1_calib: "right.yaml"
+image_width: 640
+image_height: 480
+   
+
+# Extrinsic parameter between IMU and Camera.
+estimate_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
+                        # 1  Have an initial guess about extrinsic parameters. We will optimize around your initial guess.
+
+body_T_cam0: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: d
+   data: [ 0.9999883212374959, -0.0016200367570961167, 0.00455333608675238, 0.00274103557323312,
+           0.0016207009713082678, 0.9999986765545685, -0.00014218815574486914, 0.0051021095335029186,
+           -0.004553099710621812, 0.00014956609138165998, 0.9999896234026672, -0.015905423901773644,
+           0., 0., 0., 1. ]
+
+body_T_cam1: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: d
+   data: [ 0.9999782580658405, -0.0015803546974823713, 0.006402021136921246, -0.047375690058074384,
+           0.0015778822299587817, 0.999998678611115, 0.000391233552411814, 0.004987267925872967,
+           -0.0064026309651440405, -0.0003811234108499079, 0.9999794303192792, -0.015699539084287523,
+           0., 0., 0., 1. ]
+
+#Multiple thread support
+multiple_thread: 1
+
+#feature traker paprameters
+max_cnt: 100            # max feature number in feature tracking
+min_dist: 30            # min distance between two features 
+freq: 10                # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image
+F_threshold: 0.5        # ransac threshold (pixel)
+show_track: 0           # publish tracking image as topic
+flow_back: 1            # perform forward and backward optical flow to improve feature tracking accuracy
+
+#optimization parameters
+max_solver_time: 0.07  # max solver itration time (ms), to guarantee real time
+max_num_iterations: 8   # max solver itrations, to guarantee real time
+keyframe_parallax: 10.0 # keyframe selection threshold (pixel)
+
+#imu parameters       The more accurate parameters you provide, the better performance
+acc_n: 0.19956276517606555          # accelerometer measurement noise standard deviation. #0.2   0.04
+gyr_n: 0.0024544975995101663         # gyroscope measurement noise standard deviation.     #0.05  0.004
+acc_w: 0.0009100922977621528         # accelerometer bias random work noise standard deviation.  #0.002
+gyr_w: 1.624196367554727e-05      # gyroscope bias random work noise standard deviation.     #4.0e-5
+g_norm: 9.7940         # gravity magnitude
+
+#unsynchronization parameters
+estimate_td: 0                      # online estimate time offset between camera and imu
+td:  0.006005004016868218                             # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
