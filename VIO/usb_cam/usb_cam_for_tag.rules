@@ -1,0 +1,1 @@
+KERNEL=="video*", KERNELS=="1-1.4", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="3035", MODE:="0777", SYMLINK+="tag_cam"

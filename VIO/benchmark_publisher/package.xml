@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>benchmark_publisher</name>
+  <version>0.0.0</version>
+  <description>The benchmark_publisher package</description>
+
+  <maintainer email="dvorak@todo.todo">dvorak</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>tf</depend>
+  <depend>image_transport</depend>
+  <depend>cv_bridge</depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+</package>

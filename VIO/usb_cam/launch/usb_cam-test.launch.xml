@@ -1,0 +1,52 @@
+<launch>
+    <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+        <param name="video_device" value="/dev/tag_cam" />
+        <!-- <param name="camera_info_url" value="package://usb_cam/camera_info/usb_cam.yaml"/> -->
+        <param name="camera_info_url" value="file:///home/moi/.usb_cam.yaml"/>
+        <param name="image_width" value="800" />
+        <param name="image_height" value="600" />
+        <param name="pixel_format" value="mjpeg" />
+        <param name="camera_frame_id" value="base_camera_link_usb_cam" />
+        <param name="io_method" value="mmap"/>
+        <!--帧率-->
+        <param name="framerate" value="15"/>
+
+        <!-- brightness 0x00980900 (int): min=-64 max=64 step=1 default=0 -->
+        <param name="brightness" value="0"/>
+        <!-- contrast 0x00980901 (int): min=0 max=100 step=1 default=40 -->
+        <param name="contrast" value="100"/>
+        <!-- saturation 0x00980902 (int): min=0 max=100 step=1 default=64 -->
+        <param name="saturation" value="50"/>
+        <!-- hue 0x00980903 (int): min=-180 max=180 step=1 default=0 -->
+        <param name="hue" value="0"/>
+        <!-- white_balance_temperature_auto (bool) -->
+        <!-- 0: false (manual) -->
+        <!-- 1: true (auto) -->
+        <param name="white_balance_temperature_auto" value="0"/>
+        <!-- gamma 0x00980910 (int): min=100 max=500 step=1 default=300 -->
+        <param name="gamma" value="300"/>
+        <!-- gain 0x00980913 (int): min=1 max=128 step=1 default=64 -->
+        <param name="gain" value="64"/>
+        <!-- power_line_frequency 0x00980918 (menu): min=0 max=2 default=1 -->
+        <param name="power_line_frequency" value="1"/>
+        <!-- white_balance_temperature 0x0098091a (int): min=2800 max=6500 step=10 default=4600 -->
+        <param name="white_balance_temperature" value="4600"/>
+        <!-- sharpness 0x0098091b (int): min=0 max=100 step=1 default=50 -->
+        <param name="sharpness" value="100"/>
+        <!-- backlight_compensation 0x0098091c (int): min=0 max=2 step=1 default=0 -->
+        <param name="backlight_compensation" value="1"/>
+        <!-- exposure_auto 0x009a0901 (menu): min=0 max=3 default=3 -->
+        <!-- V4L2_CID_EXPOSURE_AUTO: enum v4l2_exposure_auto_type -->
+        <!-- Enables automatic adjustments of the exposure time and/or iris aperture. -->
+        <!-- The effect of manual changes of the exposure time or iris aperture while  -->
+        <!-- these features are enabled is undefined, drivers should ignore such requests. -->
+        <!-- Possible values are: -->
+        <!-- V4L2_EXPOSURE_AUTO - Automatic exposure time, automatic iris aperture. -->
+        <!-- V4L2_EXPOSURE_MANUAL - Manual exposure time, manual iris. -->
+        <!-- V4L2_EXPOSURE_SHUTTER_PRIORITY - Manual exposure time, auto iris. -->
+        <!-- V4L2_EXPOSURE_APERTURE_PRIORITY - Auto exposure time, manual iris. -->
+        <param name="exposure_auto" value="1"/>
+        <!-- exposure_absolute 0x009a0902 (int): min=2 max=10000 step=1 default=6 flags=inactive -->
+        <param name="exposure_absolute" value="2"/>
+    </node>
+</launch>

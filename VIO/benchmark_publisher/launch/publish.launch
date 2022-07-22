@@ -1,0 +1,11 @@
+<launch>
+    <node name="benchmark_publisher" pkg="benchmark_publisher" type="benchmark_publisher" output="screen">
+        <param name="model" type="bool" value="true" />
+        <!--  true：表示已经有光追marker和相机之间的外参，进行真实的里程计数据
+              false：表示进行光追marker和相机之间的外参计算-->
+        <param name="config_file" type="string" value="param.txt" /> <!-- 相机内参信息 + 外参数据-->
+        <param name="vio_topic_name" type="string" value="/vins_estimator/odometry" />
+        <param name="image_topic_name" type="string" value="image" />
+        <param name="optitrack_topic_name" type="string" value="pose" />
+    </node>
+</launch>

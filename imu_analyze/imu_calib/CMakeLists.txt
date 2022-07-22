@@ -34,19 +34,11 @@ include_directories(
 
 # accel_calib library
 add_library(accel_calib
-  src/accel_calib/accel_calib.cpp
-        include/imu_calib/acc.h include/imu_calib/gyro.h)
+  src/accel_calib/accel_calib.cpp)
 target_link_libraries(accel_calib
   ${YAML_LIBRARIES}
 )
 
-# do_calib node
-add_executable(do_calib src/do_calib_node.cpp src/do_calib.cpp)
-add_dependencies(do_calib ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(do_calib
-  accel_calib
-  ${catkin_LIBRARIES}
-)
 
 # apply_calib node
 add_executable(apply_calib src/apply_calib_node.cpp src/apply_calib.cpp)
@@ -61,7 +53,7 @@ target_link_libraries(apply_calib
 #############
 
 # executables and libraries
-install(TARGETS accel_calib do_calib apply_calib
+install(TARGETS accel_calib  apply_calib
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}

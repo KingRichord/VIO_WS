@@ -14,7 +14,7 @@
       <param name="child_frame_id" value="odom"/>
 
       <remap from="~imu" to="/camera/imu"/>
-      <remap from="~cam0_image" to="/camera/color/image_raw"/>
+      <remap from="~cam0_image" to="/camera/infra1/image_rect_raw"/>
 
       <param name="config_file" value="$(find larvio)/../../../config/d435i.yaml"/>
 

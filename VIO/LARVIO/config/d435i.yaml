@@ -5,7 +5,7 @@ output_dir: "/root/larvio_results/"
 
 # switches
 if_FEJ: 1    # 0(false) or 1(true)
-estimate_extrin: 0    # 0(false) or 1(true)
+estimate_extrin: 1   # 0(false) or 1(true)
 estimate_td: 0    # 0(false) or 1(true)
 calib_imu_instrinsic: 0    # 0(false) or 1(true)
 
@@ -15,15 +15,15 @@ distortion_model: "radtan"    # only support "radtan" and "equidistant"
 resolution_width: 640
 resolution_height: 480
 intrinsics:
-  fx: 603.008197352922
-  fy: 603.626185715393
-  cx: 309.1454985750065
-  cy: 238.9221403976031
+  fx: 385.94651107381173
+  fy: 386.80952391929685
+  cx: 317.6384942676234
+  cy: 238.35352398894932
 distortion_coeffs:
-  k1: 0.16336207016701648
-  k2: -0.3546193472493976
-  p1: 0.0013272005470347293
-  p2: 0.00038661327291747476
+  k1: 0.008102965627466683
+  k2: -0.0055070179614814625
+  p1: -0.001060696563532148
+  p2: -0.0005589807711704417
 
 # imu-camera extrinsic, including spacial and temporal parameters
 T_cam_imu: !!opencv-matrix
@@ -31,12 +31,12 @@ T_cam_imu: !!opencv-matrix
   cols: 4
   dt: d
   data:
-    [0.9999294688099419, 0.00292548649785927, 0.01151081813851792, 0.022861687443913144,
-     -0.0029664600139288465, 0.999989319664898, 0.0035441037118079588, -0.0006722712758855301,
-     -0.011500326971566997, -0.0035780001236909963, 0.9999274675668539, -0.0038873111630138148,
-     0,                   0,                   0,   1.000000000000000]
+    [ 0.99999678, 0.00198932,  -0.00157488, -0.00444001,
+      -0.00198420, 0.99999277, 0.00324455, 0.00045296,
+      0.00158133, -0.00324141, 0.99999350, 0.01333104,
+      0,                   0,                   0,   1.000000000000000 ]
 #td: 0.007287297098326571
-td: 0
+td: 0.0041313985533080605
 
 # TODO: if calibrate camera instrinsic online
 
@@ -49,7 +49,7 @@ track_precision: 0.01
 ransac_threshold: 1
 max_features_num: 200
 min_distance: 20
-flag_equalize: 1    # 0(false) or 1(true)
+flag_equalize: 0    # 0(false) or 1(true)
 pub_frequency: 10
 
 # window size
@@ -68,10 +68,10 @@ feature_translation_threshold: -1.0
 
 
 # imu and camera measurement noise parameters
-noise_gyro: 2.8720118786860445e-02
-noise_acc:  1.8579866117590046e-01
-noise_gyro_bias: 1.8149405667931398e-05
-noise_acc_bias: 2.7757851353564139e-02
+noise_gyro: 0.004
+noise_acc:  0.04
+noise_gyro_bias: 4.0e-5
+noise_acc_bias: 0.002
 noise_feature: 0.008
 
 # filter intial covariance

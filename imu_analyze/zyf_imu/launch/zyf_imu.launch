@@ -1,0 +1,10 @@
+<launch>
+  <!-- bringup parameters -->
+  <![CDATA[
+    this launch file is availabel for ZYF IMU driver;
+    parameter brief:
+      imu_dev: serial port for IMU
+  ]]>
+  <param name="imu_dev" value="/dev/ttyUSB0" />
+  <node pkg="zyf_imu" type="zyf_imu_node" name="zyf_imu_node" output="screen" />
+</launch>
